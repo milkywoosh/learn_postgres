@@ -1,0 +1,24 @@
+
+/bin/zsh for terminal
+
+how to run postgres in shell iTerm2: 
+1. start postgres on terminal
+-> type "export PATH=/Library/PostgreSQL/12/bin:$PATH" on terminal
+
+how to check this info "/Library/PostgreSQL/12/bin"??
+-> ??
+
+2. after step no.1:-> psql -U postgres
+
+- cek db: \list
+- connect to db: \c name_of_db;
+- check tables: \dt+;
+- quit db: ctrl + d or "quit"
+
+- create new table with auto increment: 
+create table student (id serial primary key,                          name varchar(30), active boolean);
+
+- describe table: 
+\d tablename;
+
+

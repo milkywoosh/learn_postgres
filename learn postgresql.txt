@@ -1,0 +1,39 @@
+- start postgre: sudo su - postgres
+- then: psql to start the CLI(command line interaction)
+
+- show exist databases: \list or \l
+- connect to db : \c db_name;
+- show exist table: \dt+;
+- quit: ctrl - d
+
+
+- create table: create table gold(id smallserial primary key, brand varchar(25), date_buy date , date_buyback date, status_buyback boolean);
+
+- concat column: select concat(first_name, ' ', last_name) as fullname, status
+from student;
+
+- add new column: alter table <table_name> add column <col_name> datatype;
+
+- copying table from db A to db B: (masih pertanyaan)
+pg_dump -U postgres -t <old_table> <old_database> | psql -U postgres -d <new_database>
+
+- sorting date: select * from gold  
+		where  date_buy 
+		between '2019-01-01' and  '2020-05-03'; 
+		
+		
+- DB ADMINISTRATOR: pgAdmin 4, run on localhost
+- describe table: \d table_name;
+
+- add new column into table: ALTER table table_name
+		 	      add column whatcolumn dtype;
+		 	      
+- update value/data in table: UPDATE table_name
+			       SET which_column = 'what value'
+			       WHERE id = 1; // specify the id or any mark
+		
+
+
+
+
+
