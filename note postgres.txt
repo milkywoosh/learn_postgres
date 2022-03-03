@@ -1,4 +1,8 @@
 
+sudo lsof -i :5432
+
+PASS MASTER POSTGRES --> postgres123
+
 /bin/zsh for terminal
 
 how to run postgres in shell iTerm2: 
