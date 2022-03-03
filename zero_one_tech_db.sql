@@ -45,3 +45,10 @@ on news_article.ID_ARTICLE = article_and_topic.ID_ARTICLE
 JOIN topic
 on topic.ID_TOPIC = article_and_topic.ID_TOPIC 
 WHERE news_article.status_article = 'draft';
+
+-- GET TOPIC AND ALL ITS RELATED ARTICLE
+SELECT * FROM topic JOIN article_and_topic
+on topic.ID_TOPIC = article_and_topic.ID_TOPIC
+JOIN news_article
+on news_article.id_article = article_and_topic.id_article
+WHERE topic.name_topic = 'tips' ;
