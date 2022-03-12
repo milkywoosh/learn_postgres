@@ -1,5 +1,9 @@
 
-sudo lsof -i :5432
+
+- if postgres has already started check: 
+    sudo lsof -i :5432
+- to kill them :
+    sudo pkill -u postgres
 
 PASS MASTER POSTGRES --> postgres123
 
