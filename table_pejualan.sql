@@ -1,21 +1,3 @@
-CREATE TABLE detil_pesan (
-    id_pesan INT NOT NULL,
-    id_produk VARCHAR(5) NOT NULL,  
-    jumlah INT NOT NULL default 0,
-    harga DECIMAL NOT NULL default 0,
-    PRIMARY KEY (id_pesan, id_produk),
-    FOREIGN KEY (id_produk) REFERENCES produk (id_produk),
-    FOREIGN KEY(id_pesan) REFERENCES pesan (id_pesan)
-);
-
-CREATE TABLE pesan (
-    id_pesan SERIAL NOT NULL,
-    id_pelanggan VARCHAR(5) NOT NULL,
-    tgl_pesan date NOT NULL,
-    PRIMARY KEY (id_pesan),
-    KEY id_pelanggan (id_pelanggan),
-    CONSTRAINT pesan_ibfk_1 FOREIGN KEY (id_pelanggan) REFERENCES pelanggan (id_pelanggan)
-);
 
 CREATE TABLE produk (
     id_produk VARCHAR(5) NOT NULL,
@@ -34,3 +16,26 @@ CREATE TABLE pelanggan (
     email VARCHAR(50) not null,
     PRIMARY KEY (id_pelanggan)
 );
+
+CREATE TABLE pesan (
+    id_pesan SERIAL NOT NULL,
+    id_pelanggan VARCHAR(5) NOT NULL,
+    tgl_pesan date NOT NULL,
+    PRIMARY KEY (id_pesan),
+    CONSTRAINT pesan_fk 
+    FOREIGN KEY (id_pelanggan) 
+    REFERENCES pelanggan (id_pelanggan)
+);
+
+
+CREATE TABLE detil_pesan (
+	id_detil_pesan INT NOT NULL,
+    id_pesan INT NOT NULL,
+    id_produk VARCHAR(5) NOT NULL,  
+    jumlah INT NOT NULL default 0,
+    harga DECIMAL NOT NULL default 0,
+	PRIMARY KEY(id_detil_pesan),
+    FOREIGN KEY (id_produk) REFERENCES produk (id_produk),
+    FOREIGN KEY(id_pesan) REFERENCES pesan (id_pesan)
+);
+
