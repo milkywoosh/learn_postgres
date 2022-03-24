@@ -6,7 +6,6 @@ OPEN SAVED FILED FROM GOOGLE DRIVE AS .drawio extension !!
 -->IMPLEMENT IN POSTGRES NICE EXPLANATION
 https://code.tutsplus.com/articles/sql-for-beginners-part-3-database-relationships--net-8561
 
-
 --> USING GITMIND
 https://gitmind.com/app/flowchart/9a943d4b33b366f9f4b027efe917eaa8
 
