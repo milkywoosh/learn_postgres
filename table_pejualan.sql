@@ -28,7 +28,7 @@ CREATE TABLE pesan (
 );
 
 CREATE TABLE detil_pesan (
-	id_detil_pesan INT NOT NULL,
+	id_detil_pesan SERIAL NOT NULL,
     id_pesan INT NOT NULL,
     id_produk VARCHAR(5) NOT NULL,  
     jumlah INT NOT NULL default 0,
@@ -37,6 +37,11 @@ CREATE TABLE detil_pesan (
     FOREIGN KEY (id_produk) REFERENCES produk (id_produk),
     FOREIGN KEY(id_pesan) REFERENCES pesan (id_pesan)
 );
+
+INSERT INTO detil_pesan (id_pesan, id_produk, jumlah, harga)
+VALUES 
+('C001', 10, 100);
+
 
 INSERT INTO pelanggan (id_pelanggan, nm_pelanggan, alamat, telepon, email)
 VALUES 
@@ -61,6 +66,25 @@ SELECT pelanggan.id_pelanggan, pelanggan.nm_pelanggan, count( pelanggan.nm_pelan
 FROM pesan LEFT JOIN pelanggan
 ON pelanggan.id_pelanggan = pesan.id_pelanggan
 GROUP BY pelanggan.id_pelanggan;
+
+
+INSERT INTO pesan (id_pelanggan, tgl_pesan)
+VALUES ('P0010', '2022-02-01');
+
+--  JOIN TABLE 2 TABLES
+SELECT pelanggan.*, pesan.*, produk.*, detil_pesan.*
+FROM pelanggan p
+    INNER JOIN pesan psn
+        ON  p.id_pelanggan = psn.id_pelanggan
+
+
+-- QUERY-> JOIN THREE TABLE
+SELECT p.*, psn.*, dp.*
+FROM pelanggan p
+    INNER JOIN pesan psn
+        ON  p.id_pelanggan = psn.id_pelanggan
+    INNER JOIN detil_pesan dp
+        ON dp.id_pesan = psn.id_pesan;
 
 
 
