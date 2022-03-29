@@ -1,4 +1,8 @@
 
+-- some tips:
+    -- buat table dengan fields tanpa foreign key firstly
+    -- buat table denga fields terdapat foreign key yang mereferensi ke table lain belakangan, agar foreign key sudah terbentuk
+
 CREATE TABLE produk (
     id_produk VARCHAR(5) NOT NULL,
     nm_produk VARCHAR(30) NOT NULL,
@@ -86,6 +90,48 @@ FROM pelanggan p
     INNER JOIN detil_pesan dp
         ON dp.id_pesan = psn.id_pesan;
 
+
+
+
+INSERT INTO posts (text, updated_at, created_at)
+VALUES
+('tes comment 1', CURRENT_DATE, CURRENT_DATE),
+('tes comment 2', CURRENT_DATE, CURRENT_DATE),
+('tes comment 3', CURRENT_DATE, CURRENT_DATE);
+
+
+INSERT INTO post_likes (user_id, created_at)
+VALUES(2,CURRENT_DATE),
+(2,CURRENT_DATE);
+(2,CURRENT_DATE);
+(2,CURRENT_DATE);
+(2,CURRENT_DATE);
+
+
+CREATE TABLE posts (
+	id SERIAL NOT NULL UNIQUE,
+	text TEXT,
+	user_id SERIAL NOT NULL UNIQUE,
+	updated_at TIMESTAMP NOT NULL,
+	created_at TIMESTAMP NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE post_likes (
+	post_id NOT NULL SERIAL,
+	user_id INT  NOT NULL ,
+	created_at TIMESTAMP NOT NULL,
+    FOREIGN KEY (user_id) references posts(user_id),
+    PRIMARY KEY(post_id)
+);
+
+
+SELECT p.*, pl.*
+FROM posts p 
+LEFT JOIN post_likes pl 
+	ON p.user_id = pl.user_id
+WHERE pl.user_id = 2
+GROUP BY p.id or pl.user_id;
 
 
 
