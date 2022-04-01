@@ -92,7 +92,7 @@ FROM pelanggan p
 
 
 
-
+-- ================================================================================
 INSERT INTO posts (text, updated_at, created_at)
 VALUES
 ('tes comment 1', CURRENT_DATE, CURRENT_DATE),
@@ -103,35 +103,55 @@ VALUES
 INSERT INTO post_likes (user_id, created_at)
 VALUES(2,CURRENT_DATE),
 (2,CURRENT_DATE);
-(2,CURRENT_DATE);
-(2,CURRENT_DATE);
-(2,CURRENT_DATE);
 
+-- CREATE TABLE IN CMSLAB db
+CREATE TABLE users (
+	id SERIAL UNIQUE,
+	username VARCHAR(50),
+	created_user date DEFAULT CURRENT_DATE
+);
 
 CREATE TABLE posts (
-	id SERIAL NOT NULL UNIQUE,
+	id SERIAL,
 	text TEXT,
-	user_id SERIAL NOT NULL UNIQUE,
-	updated_at TIMESTAMP NOT NULL,
-	created_at TIMESTAMP NOT NULL,
+	user_id INT NOT NULL,
+	updated_at TIMESTAMP DEFAULT  CURRENT_DATE,
+	created_at TIMESTAMP DEFAULT  CURRENT_DATE,
+	FOREIGN KEY (user_id) REFERENCES users(id),
 	PRIMARY KEY (id)
 );
 
 CREATE TABLE post_likes (
-	post_id NOT NULL SERIAL,
-	user_id INT  NOT NULL ,
-	created_at TIMESTAMP NOT NULL,
-    FOREIGN KEY (user_id) references posts(user_id),
-    PRIMARY KEY(post_id)
+    like_id SERIAL UNIQUE,
+    likes BOOLEAN NOT NULL DEFAULT FALSE,
+    dislikes BOOLEAN NOT NULL DEFAULT FALSE,
+    empty_state BOOLEAN NOT NULL DEFAULT TRUE,
+    user_id INT ,
+    post_to_like INT UNIQUE,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (post_to_like) REFERENCES posts(id),
+    PRIMARY KEY(like_id)
 );
 
 
-SELECT p.*, pl.*
-FROM posts p 
-LEFT JOIN post_likes pl 
-	ON p.user_id = pl.user_id
-WHERE pl.user_id = 2
-GROUP BY p.id or pl.user_id;
+ INSERT INTO posts (text, user_id, updated_at, created_at)
+VALUES('tes komen baru', 3, CURRENT_DATE, CURRENT_DATE),
+('tes baru', 3, CURRENT_DATE, CURRENT_DATE);
+
+-- GI
+INSERT INTO post_likes(likes, user_id, post_to_like)
+VALUES (TRUE, 1, 3),
+(TRUE, 1, 4),
+(TRUE, 1, 5);
+
+
+
+-- CHECK ALL COMMENT OF ben dol user
+SELECT * FROM posts p
+INNER JOIN users u
+	ON p.user_id = u.id
+WHERE u.username = 'ben dol';
+
 
 
 
