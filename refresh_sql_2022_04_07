@@ -1,0 +1,16 @@
+-- create view
+/*
+	VIEW is a created temporary table for COMPLICATED QUERY
+*/
+CREATE VIEW JoinTable AS
+SELECT fa.actor_id, fa.film_id, act.first_name  FROM film_actor as fa
+INNER JOIN actor act
+on fa.film_id = act.actor_id
+where act.first_name = 'Penelope';
+
+
+-- see all created Views
+SELECT table_schema, table_name 
+FROM information_schema.views 
+WHERE table_schema NOT IN ('information_schema', 'pg_catalog') 
+ORDER BY table_schema, table_name 
