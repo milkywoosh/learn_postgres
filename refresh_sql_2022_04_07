@@ -17,5 +17,5 @@ ORDER BY table_schema, table_name
 
 
 -- export table to CSV
-COPY (SELECT * FROM listed_views) TO 'D:\sql\all_table.csv' DELIMITER ',' CSV HEADER;
-
+COPY (SELECT * FROM listed_views) TO 'D:\sql\all_table.csv' DELIMITER ';' CSV HEADER;
+-- note: DELIMITER should use ';' to enable mapping to excel file
