@@ -41,3 +41,6 @@ ON c.customer_id = sac.customer_id)
 TO '/Users/macbook/learn_postgres/dvd rental data/sum_cust_payment1.csv'
 DELIMITER ';' CSV HEADER;
 -- note: DELIMITER should use ';' to enable mapping to excel file
+
+
+
