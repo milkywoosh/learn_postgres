@@ -29,11 +29,12 @@ CREATE TABLE mega
  	tujuan VARCHAR(90) ,
  	ktp VARCHAR(2) DEFAULT 'X',
  	kirim_ke_client date,
+	is_done BOOL DEFAULT 'false',
  	status_pod VARCHAR(12) ,
  	kasus text DEFAULT 'X',
  	keterangan text DEFAULT 'X',
  	tanggal_terima date ,
-	wilayah VARCHAR(20)
+	wilayah VARCHAR(20),
 	kurir VARCHAR(50),
 	cmortn VARCHAR(18),
  	PRIMARY KEY(id)
@@ -51,8 +52,8 @@ DELIMITER ';' CSV HEADER;
 PREPARE DATA EXCEL --> SAVE AS CSV, DONT OPEN AGAIN FROM EXCEL
 JUST FROM TEXT EDITOR
 -- IMPORT DATA FROM CSV TO POSTGERS
-COPY mega(awb,pelanggan,penerima,tlp1,no_referensi,tanggal,tlc_tujuan,tujuan,ktp,kirim_ke_client,status_pod,kasus,keterangan,tanggal_terima,wilayah) 
-FROM '/Users/macbook/learn_postgres/apl_project/bulkmega.csv' DELIMITER ';' csv HEADER;
+COPY mega(awb,pelanggan,penerima,tlp1,no_referensi,tanggal,tlc_tujuan,tujuan,ktp,kirim_ke_client,is_done,status_pod,kasus,keterangan,tanggal_terima,wilayah, kurir, cmortn) 
+FROM 'D:\APLIKASI LUKMAN\MEGA BANK - CGK000504\TOTAL\MIGRATESQL\MEGA TOTAL APLIKASI 2022.csv' DELIMITER ',' csv HEADER;
 
 
 
