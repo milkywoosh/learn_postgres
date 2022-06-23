@@ -25,3 +25,12 @@ GROUP BY customer_id
 HAVING SUM(amount) >= 100
 ORDER BY SUM(amount) DESC;
 
+
+/*
+	JOIN payment with Customer ID
+*/
+
+SELECT p.customer_id, CONCAT(c.first_name, ' ' ,c.last_name) AS fullname, SUM(p.amount) as sum_payment_each_cust FROM payment as p
+	LEFT JOIN customer as c ON c.customer_id = p.customer_id
+	GROUP BY p.customer_id, CONCAT(c.first_name, ' ', c.last_name)
+	ORDER BY SUM(p.amount) DESC;
