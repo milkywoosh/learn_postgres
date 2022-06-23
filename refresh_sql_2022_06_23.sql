@@ -5,6 +5,15 @@
 	you have this database stored firstly
 */
 
+
+/*
+	nice reference to LEARN
+	- https://www.freecodecamp.org/news/project-1-analyzing-dvd-rentals-with-sql-fd12dd674a64/
+	- https://www.neilwithdata.com/join-using
+*/
+
+
+
 SELECT SUM(amount) AS total_amount_rental 
 FROM rental_price;
 
