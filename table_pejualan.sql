@@ -152,7 +152,23 @@ INNER JOIN users u
 	ON p.user_id = u.id
 WHERE u.username = 'ben dol';
 
+==============================================================================================================
 
 
+INSERT INTO detil_pesan(id_pesan, id_produk, jumlah, harga)
+VALUES(3, 'C003', 2,40000 );
+
+DELETE FROM detil_pesan
+    WHERE id_detil_pesan = 4;
+
+setiap produk dibeli siapa aja??
+SELECT * 
+    FROM produk AS prod
+    LEFT JOIN detil AS dtl 
+        ON prod.id_produk = dtl.id_produk
+    FROM pesan AS psn 
+        ON psn.id_pesan = dtl.id_pesan
+    LEFT JOIN pelanggan AS cust 
+        ON cust.id_pelanggan = psn.id_pelanggan;
 
 
