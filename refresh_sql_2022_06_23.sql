@@ -43,3 +43,11 @@ SELECT p.customer_id, CONCAT(c.first_name, ' ' ,c.last_name) AS fullname, SUM(p.
 	LEFT JOIN customer as c ON c.customer_id = p.customer_id
 	GROUP BY p.customer_id, CONCAT(c.first_name, ' ', c.last_name)
 	ORDER BY SUM(p.amount) DESC;
+
+
+
+
+/*
+ CASTING DATA
+*/
+SELECT CAST(return_date-rental_date AS VARCHAR) FROM rental LIMIT 50; ---> casting data to string then later slice it	
